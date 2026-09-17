@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #172033;
+    line-height: 1.5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 7%;
+    background: #111827;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+main {
+    width: min(1100px, 100%);
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 48px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.card,
+form {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    margin: 20px 0;
+    box-shadow: 0 4px 16px #00000010;
+    overflow-wrap: anywhere;
+}
+
+.button,
+button {
+    display: inline-block;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 18px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover,
+button:hover {
+    background: #1d4ed8;
+}
+
+.secondary {
+    background: #4b5563;
+}
+
+.secondary:hover {
+    background: #374151;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 140px;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    resize: vertical;
+    font: inherit;
+    line-height: 1.5;
+}
+
+textarea:focus {
+    outline: 3px solid #bfdbfe;
+    border-color: #2563eb;
+}
+
+button {
+    margin-top: 24px;
+}
+
+.positive {
+    border-left: 6px solid #16a34a;
+}
+
+.improvement {
+    border-left: 6px solid #f59e0b;
+}
+
+.preserve {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.muted {
+    color: #64748b;
+}
+
+@media (max-width: 600px) {
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    main {
+        margin: 24px auto;
+        padding: 0 16px;
+    }
+
+    .card,
+    form {
+        padding: 20px;
+    }
+}

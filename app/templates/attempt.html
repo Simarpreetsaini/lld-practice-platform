@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Feedback: {{ result.attempt.title }}</h1>
+<p>Your solution was saved successfully.</p>
+
+<h2>Your submission</h2>
+
+<div class="card">
+    <h3>Classes</h3>
+    <p class="preserve">{{ result.attempt.class_names }}</p>
+
+    <h3>Responsibilities</h3>
+    <p class="preserve">{{ result.attempt.responsibilities }}</p>
+
+    <h3>Relationships</h3>
+    <p class="preserve">{{ result.attempt.relationships }}</p>
+
+    <h3>Trade-offs</h3>
+    <p class="preserve">{{ result.attempt.decisions }}</p>
+</div>
+
+<h2>Evaluation</h2>
+
+{% for item in result.feedback %}
+<div class="card {{ item.severity }}">
+    <strong>{{ item.category }}: {{ item.title }}</strong>
+    <p>{{ item.explanation }}</p>
+</div>
+{% endfor %}
+
+<a class="button" href="/history">View history</a>
+<a class="button secondary" href="/">Practice another problem</a>
+{% endblock %}

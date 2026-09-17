@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ problem.title }}</h1>
+<p>{{ problem.description }}</p>
+
+<h2>Requirements</h2>
+<p>{{ problem.requirements }}</p>
+
+<form method="post" action="/problems/{{ problem.id }}/submit">
+    <label for="class_names">Classes and interfaces</label>
+    <textarea
+        id="class_names"
+        name="class_names"
+        required
+        placeholder="ParkingLot, ParkingSpot, Vehicle, Ticket"
+    ></textarea>
+
+    <label for="responsibilities">Responsibilities</label>
+    <textarea
+        id="responsibilities"
+        name="responsibilities"
+        required
+        placeholder="Explain the responsibility of each class"
+    ></textarea>
+
+    <label for="relationships">Relationships</label>
+    <textarea
+        id="relationships"
+        name="relationships"
+        required
+        placeholder="Explain how classes interact"
+    ></textarea>
+
+    <label for="decisions">Design decisions and trade-offs</label>
+    <textarea
+        id="decisions"
+        name="decisions"
+        required
+        placeholder="Explain your choices and alternatives"
+    ></textarea>
+
+    <button type="submit">Submit solution</button>
+</form>
+{% endblock %}

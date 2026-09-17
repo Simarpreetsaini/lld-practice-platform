@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Attempt history</h1>
+
+{% if attempts %}
+    {% for attempt in attempts %}
+    <div class="card">
+        <h2>{{ attempt.title }}</h2>
+        <p>{{ attempt.created_at }}</p>
+        <a href="/attempts/{{ attempt.id }}">View feedback</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No attempts yet.</p>
+{% endif %}
+{% endblock %}

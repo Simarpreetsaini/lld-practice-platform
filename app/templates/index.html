@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Practice Low-Level Design</h1>
+<p>Choose a problem, submit your design, and receive explainable feedback.</p>
+
+<div class="grid">
+    {% for problem in problems %}
+    <section class="card">
+        <h2>{{ problem.title }}</h2>
+        <p>{{ problem.description }}</p>
+        <a class="button" href="/problems/{{ problem.id }}">Start practice</a>
+    </section>
+    {% endfor %}
+</div>
+{% endblock %}
