@@ -1,3 +1,4 @@
+
 from pathlib import Path
 
 from fastapi import FastAPI, Form, Request
@@ -9,10 +10,16 @@ from app.domain.evaluator import RuleBasedEvaluator
 from app.domain.models import Attempt
 from app.repositories.sqlite_repository import SQLiteRepository
 
+
 BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI(title="LLD Practice Platform")
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+
+app.mount(
+    "/static",
+    StaticFiles(directory=BASE_DIR / "static"),
+    name="static"
+)
 
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 repository = SQLiteRepository("lld_practice.db")
@@ -22,9 +29,11 @@ evaluator = RuleBasedEvaluator()
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
     problems = repository.get_problems()
+
     return templates.TemplateResponse(
-        "index.html",
-        {"request": request, "problems": problems}
+        request=request,
+        name="index.html",
+        context={"problems": problems}
     )
 
 
@@ -36,8 +45,9 @@ def problem_detail(request: Request, problem_id: int):
         return HTMLResponse("Problem not found", status_code=404)
 
     return templates.TemplateResponse(
-        "problem.html",
-        {"request": request, "problem": problem}
+        request=request,
+        name="problem.html",
+        context={"problem": problem}
     )
 
 
@@ -80,8 +90,9 @@ def attempt_detail(request: Request, attempt_id: int):
         return HTMLResponse("Attempt not found", status_code=404)
 
     return templates.TemplateResponse(
-        "attempt.html",
-        {"request": request, "result": result}
+        request=request,
+        name="attempt.html",
+        context={"result": result}
     )
 
 
@@ -90,6 +101,7 @@ def history(request: Request):
     attempts = repository.get_attempts()
 
     return templates.TemplateResponse(
-        "history.html",
-        {"request": request, "attempts": attempts}
+        request=request,
+        name="history.html",
+        context={"attempts": attempts}
     )
